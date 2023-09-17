@@ -10,12 +10,14 @@
        /* Add custom CSS for the button hover effect */
        #myButton {
            background-color: rgba(59, 130, 246, 1); /* Original background color */
-           transition: background-color 0.3s ease-in-out;
+           color: white; /* Original text color */
+           transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
        }
 
        #myButton:hover {
            background-color: rgba(59, 130, 246, 0.5); /* Dimmed background color */
-       }
+           color: black; /* Text color on hover */
+           }
 
        #myButton.fade-out {
            animation: fadeToOriginal 0.3s ease-in-out forwards;
@@ -27,7 +29,7 @@
            }
            to {
                background-color: rgba(59, 130, 246, 1); /* Original background color */
-           }
+}
        }
    </style>
 </head>
@@ -41,18 +43,8 @@
    </div>
 
    <script>
-       // JavaScript to handle button click and hover effect
-       const myButton = document.getElementById('myButton');
-
-       myButton.addEventListener('mouseenter', function() {
-           this.classList.remove('fade-out');
-       });
-
-       myButton.addEventListener('mouseleave', function() {
-           this.classList.add('fade-out');
-       });
-
-       myButton.addEventListener('click', function() {
+       // JavaScript to handle button click
+       document.getElementById('myButton').addEventListener('click', function() {
            // Use fetch to call the Python script (server-side)
            fetch('/call-python-script')
                .then(response => response.text())
